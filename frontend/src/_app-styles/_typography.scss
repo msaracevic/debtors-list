@@ -1,0 +1,21 @@
+$font-size-base: 12px;
+$fontSizeSmall: 10px;
+$baseLineHeight: 1.3;
+
+body {
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Helvetica", "Arial", sans-serif;
+  line-height: $baseLineHeight;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+}
+
+p, li {
+  margin: 0.5em 0;
+  line-height: 1.3;
+}
+
+span, a {
+  line-height: 1.3;
+}

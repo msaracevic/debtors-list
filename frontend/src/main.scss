@@ -1,0 +1,13 @@
+$color-branding-blue: #1F2530;
+
+@import "_app-styles/reset";
+@import "_app-styles/breakpoints";
+@import "_app-styles/typography";
+
+.header {
+  background: $color-branding-blue;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em 0;
+}
