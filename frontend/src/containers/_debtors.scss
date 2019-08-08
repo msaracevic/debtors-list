@@ -1,0 +1,54 @@
+.debtors {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  // NOTE: Anti-pattern to mobile first, but since this is obviously data meant for tables and tables
+  //       pretty much work in any browser exactly as we need them in desktop resolutions then
+  //       we are only going to adjust tables for mobile phones
+
+  // NOTE: Anti-pattern to BEM, since we have tables defined as general look and feel in whole app
+  //       we have to target these via tag names as well
+  @include media-breakpoint-down(sm) {
+    table {
+      thead {
+        display: none;
+      }
+
+      tr {
+        height: auto;
+        display: block;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+
+        &:nth-of-type(even) {
+          background-color: #FFFFFF;
+        }
+      }
+
+      td {
+        display: block;
+        position: relative;
+        text-align: right;
+        padding: 0;
+        margin: 0 0 0.2em 0;
+
+        &:before {
+          content: attr(data-label) ":";
+          display: inline-block;
+          position: absolute;
+          text-align: left;
+          left: 0.5em;
+        }
+      }
+
+      td[data-label="Name"] {
+        &:before {
+          display: none;
+        }
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  }
+}

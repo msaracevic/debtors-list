@@ -1,5 +1,22 @@
 # Debtors List 
 
+## Information
+
+To run locally as developer please start two separated bash instances.
+
+First instance 
+ - `cd server && npm install && npm run`
+ - this will start server on port 3000 which will power the API
+   - if you have `process.env.PORT` set to something else, it will use that port but then you need to update
+     manually `proxy` field in `frontend/package.json`.
+
+Second instance
+  - `cd frontend && npm install && npm run`
+  - this will start React frontend
+    - since port `3000` will most likely be taken by server, it will offer you to start on `3001` and then
+      all AJAX requests will automatically use proxy to port `3000`.
+ 
+
 ## Assignment
 Create a simple (React) SPA that displays a list of debtors.
 

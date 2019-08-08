@@ -1,11 +1,7 @@
-$font-size-base: 12px;
-$fontSizeSmall: 10px;
-$baseLineHeight: 1.3;
-
 body {
   font-size: $font-size-base;
   -webkit-font-smoothing: antialiased;
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Nunito", "Helvetica", "Arial", sans-serif;
   line-height: $baseLineHeight;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern";
@@ -18,4 +14,93 @@ p, li {
 
 span, a {
   line-height: 1.3;
+}
+
+.link {
+  &:visited, &:link, &:hover, &:active {
+    text-decoration: none;
+  }
+  
+  &--white {
+    &:visited, &:link, &:hover, &:active {
+      color: white;
+    }
+  }
+  
+  &--panel {
+    display: inline-block;
+    box-shadow: 1px 1px 3px $color-branding-blue;
+    padding: 2em 1rem;
+    background: #DDDDDD;
+    color: black;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+
+    &:hover {
+      box-shadow: 1px 1px 4px 1px $color-branding-blue;
+    }
+
+    &:active {
+      box-shadow: 1px 1px 5px 1px $color-branding-blue;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  margin: 0.5em 0;
+  padding: 0.5rem 1em;
+  border-radius: 5px;
+  font-size: $font-size-base;
+  box-shadow: 1px 1px 3px $color-branding-blue;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 5px $color-branding-blue;
+  }
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 2.1em;
+  margin: 0.7em 0;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 2.1em;
+  margin: 0.7em 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.6em;
+  margin: 0.7em 0;
+}
+
+h4 {
+  font-size: 1.3em;
+  line-height: 1.4em;
+  margin: 0.7em 0;
+}
+
+h5 {
+  font-size: 1.2em;
+  line-height: 1.3em;
+  margin: 0.5em 0;
+}
+
+h6 {
+  font-size: 1.1em;
+  line-height: 1.2em;
+  margin: 0.5em 0;
+}
+
+.bold {
+  font-weight: bold;
 }

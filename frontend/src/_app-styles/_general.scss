@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  background: white;
+}
+
+#root {
+  position: relative;
+  transition: 0.3s all linear;
+}
+
+.header {
+  background: $color-branding-blue;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em 0;
+}
+
+.main {
+  background: white;
+  display: block;
+  padding: 1em 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 1em 2rem;
+  }
+}
+
+table {
+  width: 100%;
+  box-shadow: $color-branding-blue;
+
+  td, th {
+    padding: 1em 1rem;
+
+    &.number {
+      text-align: right;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  thead {
+    tr {
+      background: $color-background-table-header;
+      color: $color-table-header;
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $color-background-table-accent;
+
+      &:nth-of-type(even) {
+        background-color: $color-background-table-primary;
+      }
+    }
+  }
+}

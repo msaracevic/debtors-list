@@ -1,4 +1,4 @@
-export function getDebtorsList(req, res) {
+export function getDebtors(req, res) {
   const response = [{
     id:                     1,
     name:                   'Musterfirma',
@@ -11,6 +11,12 @@ export function getDebtorsList(req, res) {
     amount:                 10000.0000,
     amount_left:            4327.7265,
     date_of_first_purchase: '2019-07-07'
+  }, {
+    id:                     3,
+    name:                   'Random GmbH.',
+    amount:                 10000.0000,
+    amount_left:            2344.2332,
+    date_of_first_purchase: '2019-07-12'
   }];
 
   res.json(response);

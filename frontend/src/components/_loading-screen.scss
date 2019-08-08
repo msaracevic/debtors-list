@@ -1,0 +1,50 @@
+$spinner-size: 80px;
+$spinner-inset: 10px;
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  position: relative;
+
+  &__message {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
+
+  &--center {
+    width: $spinner-size;
+    height: $spinner-size;
+    margin: 0 auto;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+
+    &:after {
+      content: '';
+      display: block;
+      width: $spinner-size - $spinner-inset;
+      height: $spinner-size - $spinner-inset;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid $color-branding-blue;
+      border-color: $color-branding-blue transparent $color-branding-blue transparent;
+      animation: rotate 1.2s linear infinite;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

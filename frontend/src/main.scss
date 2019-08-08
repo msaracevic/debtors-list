@@ -1,13 +1,28 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
 $color-branding-blue: #1F2530;
 
+$color-background-table-header: #222255;
+$color-table-header: #FFFFFF;
+$color-background-table-primary: #FFFFFF;
+$color-background-table-accent: #EEEEEE;
+$font-size-base: 14px;
+$font-size-small: 12px;
+$baseLineHeight: 1.3;
+
+
+// Non BEM rules, affects whole site to give general look and feel
+// Most of these are copy paste from other projects like reset.css, tryformation.com, even bootstrap breakpoints
 @import "_app-styles/reset";
 @import "_app-styles/breakpoints";
 @import "_app-styles/typography";
+@import "_app-styles/general";
 
-.header {
-  background: $color-branding-blue;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 1em 0;
-}
+// custom BEM rules
+@import "components/loading-screen";
+@import "containers/debtors";
