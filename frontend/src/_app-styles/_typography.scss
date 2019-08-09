@@ -17,16 +17,23 @@ span, a {
 }
 
 .link {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+
   &:visited, &:link, &:hover, &:active {
     text-decoration: none;
   }
-  
+
   &--white {
     &:visited, &:link, &:hover, &:active {
       color: white;
     }
   }
-  
+
   &--panel {
     display: inline-block;
     box-shadow: 1px 1px 3px $color-branding-blue;
@@ -103,4 +110,8 @@ h6 {
 
 .bold {
   font-weight: bold;
+}
+
+.small {
+  font-size: 10px;
 }

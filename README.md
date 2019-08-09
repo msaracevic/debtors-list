@@ -4,18 +4,22 @@
 
 To run locally as developer please start two separated bash instances.
 
-First instance 
- - `cd server && npm install && npm run`
+First instance (Server)
+ - `cd server && npm install && npm run start`
  - this will start server on port 3000 which will power the API
    - if you have `process.env.PORT` set to something else, it will use that port but then you need to update
      manually `proxy` field in `frontend/package.json`.
+   - API is mocked and on each server restart values will change, however any changes in frontend will be correctly
+     tracked by backend during one session.
 
-Second instance
-  - `cd frontend && npm install && npm run`
-  - this will start React frontend
-    - since port `3000` will most likely be taken by server, it will offer you to start on `3001` and then
-      all AJAX requests will automatically use proxy to port `3000`.
+Second instance (Frontend)
+ - `cd frontend && npm install && npm run start`
+ - this will start React frontend
+   - since port `3000` will most likely be taken by server, it will offer you to start on `3001` and then
+      all axios requests will automatically use proxy to port `3000`.
  
+ Test of modal component 
+  - `cd frontend && npm install && npm run test`
 
 ## Assignment
 Create a simple (React) SPA that displays a list of debtors.
@@ -28,9 +32,10 @@ The debtors should be fetched from an endpoint, that will provide the data in th
 many as needed):
 
 ```
-[{ id: 1, name: "Musterfirma", amount: 10000.0000, amount_left: 4500.0000, date_of_first_purchase: “2019-07-07” },
- { id: 2, name: "Some Company Inc.", amount: 10000.0000, amount_left: 4327.7265, date_of_first_purchase: “2019-07-07”}]
+[{ id: 1, name: "Musterfirma", amount: 10000.0000, amountLeft: 4500.0000, dateOfFirstPurchase: “2019-07-07” },
+ { id: 2, name: "Some Company Inc.", amount: 10000.0000, amountLeft: 4327.7265, dateOfFirstPurchase: “2019-07-07”}]
 ```
+
 The endpoint itself can be mocked.
 
 Clicking on the debtor row should open a modal with the debtor’s name and one input field:

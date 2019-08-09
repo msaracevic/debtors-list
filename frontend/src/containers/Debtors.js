@@ -2,72 +2,77 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import * as debtorsActions from '../redux/debtorsActions';
+import * as modalActions from '../redux/modalActions';
 import {formatDate, formatNumber} from '../helpers';
-
 import LoadingScreen from '../components/LoadingScreen';
 
 class Debtors extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fetching: true,
-      search:   null
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
   componentDidMount() {
-    this.props.fetchDebtors().then(() => this.setState({fetching: false}));
+    this.props.fetchDebtors();
   }
+
+  handleDebtorAmount = (debtor) => {
+    const {showModal, setDebtorAmount} = this.props;
+
+    showModal({
+      type:          'DebtorsModal',
+      data:          debtor,
+      submitHandler: setDebtorAmount
+    });
+  };
 
   renderRow(debtor) {
-    let activeSearch = this.state.search;
     return (
-      <React.Fragment key={debtor.id}>
-        {activeSearch === null || debtor.name.toLowerCase().indexOf(activeSearch.toLowerCase()) !== -1 ?
-          <tr>
-            <td data-label="Name">{debtor.name}</td>
-            <td data-label="First purchase" className="center">{formatDate(debtor.date_of_first_purchase)}</td>
-            <td data-label="Max amount" className="number">{formatNumber(debtor.amount)}</td>
-            <td data-label="Used amount" className="number">{formatNumber(debtor.amount - debtor.amount_left)}</td>
-            <td data-label="Remaining amount" className="number">{formatNumber(debtor.amount_left)}</td>
-          </tr> : null}
-      </React.Fragment>
+      <tr key={debtor.id}>
+        <td data-label="Name" onClick={() => this.handleDebtorAmount(debtor)}>
+          <button className='link'>{debtor.name}</button>
+        </td>
+        <td data-label="First purchase" className="center">{formatDate(debtor.dateOfFirstPurchase)}</td>
+        <td data-label="Max amount" className="number">{formatNumber(debtor.amount)}</td>
+        <td data-label="Used amount" className="number">{formatNumber(debtor.amount - debtor.amountLeft)}</td>
+        <td data-label="Remaining amount" className="number">{formatNumber(debtor.amountLeft)}</td>
+      </tr>
     );
   }
 
-  handleInputChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+  renderTable(debtors) {
+    return (
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th className="center">First purchase</th>
+          <th className="number">Max amount</th>
+          <th className="number">Used amount</th>
+          <th className="number">Remaining amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        {debtors && debtors.map(debtor => this.renderRow(debtor))}
+        </tbody>
+      </table>
+    );
   }
 
   render() {
-    if (this.state.fetching && this.props.debtors.length === 0) return <LoadingScreen/>;
+    const {list: debtors} = this.props.debtors;
+
+    if (!debtors) return <LoadingScreen/>;
     else return (
       <section className="debtors">
         <h1>Current Debtors</h1>
-        <p>Search: <input name="search" onChange={this.handleInputChange} placeholder="Name"/></p>
-        <table>
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th className="center">First purchase</th>
-            <th className="number">Max amount</th>
-            <th className="number">Used amount</th>
-            <th className="number">Remaining amount</th>
-          </tr>
-          </thead>
-          <tbody>
-          {this.props.debtors.map(debtor => this.renderRow(debtor))}
-          </tbody>
-        </table>
+        {debtors.length ? this.renderTable(debtors) : 'No debtors in the system'}
       </section>
     );
   }
 }
 
-const mapStateToProps    = state => state,
-      mapDispatchToProps = {...debtorsActions};
+const mapStateToProps = state => {
+  return {
+    debtors: state.debtors
+  };
+};
+
+const mapDispatchToProps = {...debtorsActions, ...modalActions};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Debtors);

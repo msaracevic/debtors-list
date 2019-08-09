@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {Switch, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, NavLink} from 'react-router-dom';
 
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 
 import Debtors from './containers/Debtors';
+import Modal from './containers/Modal';
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <BrowserRouter>
         <header className="header">
           <NavLink exact to="/" className="link link--white">Debtors Application</NavLink>
         </header>
@@ -20,7 +21,8 @@ class App extends Component {
             <Route path="*" component={NotFound}/>
           </Switch>
         </main>
-      </React.Fragment>
+        <Modal/>
+      </BrowserRouter>
     );
   }
 }

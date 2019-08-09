@@ -1,0 +1,35 @@
+.debtors-modal {
+  &__name {
+    @extend h4;
+    margin-top: 0;
+    @extend .bold;
+  }
+
+  &__input {
+    text-align: right;
+    margin: 0 0 0 1rem;
+  }
+
+  &__message {
+    &:first-of-type {
+      margin: 1em 0 0 0;
+    }
+
+    &:last-of-type {
+      margin: 0 0 1em 0;
+    }
+
+    &--center {
+      text-align: center;
+    }
+
+    &--error {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  &__form {
+    font-size: larger;
+  }
+}

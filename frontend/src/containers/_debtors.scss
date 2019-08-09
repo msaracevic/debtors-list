@@ -1,7 +1,7 @@
 .debtors {
   max-width: 1200px;
   margin: 0 auto;
-  
+
   // NOTE: Anti-pattern to mobile first, but since this is obviously data meant for tables and tables
   //       pretty much work in any browser exactly as we need them in desktop resolutions then
   //       we are only going to adjust tables for mobile phones
@@ -45,6 +45,7 @@
         &:before {
           display: none;
         }
+
         font-size: 1.2rem;
         font-weight: bold;
         text-align: left;

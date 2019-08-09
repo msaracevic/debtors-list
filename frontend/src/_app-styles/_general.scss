@@ -7,30 +7,13 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 360px;
   background: white;
 }
 
 #root {
   position: relative;
   transition: 0.3s all linear;
-}
-
-.header {
-  background: $color-branding-blue;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 1em 0;
-}
-
-.main {
-  background: white;
-  display: block;
-  padding: 1em 1rem;
-  @include media-breakpoint-up(md) {
-    padding: 1em 2rem;
-  }
 }
 
 table {
@@ -66,5 +49,35 @@ table {
         background-color: $color-background-table-primary;
       }
     }
+  }
+}
+
+input {
+  padding: 0.5rem;
+  outline: none;
+  margin: 0.5em 0;
+  font-size: $font-size-base;
+  border: 1px inset $color-branding-blue;
+  border-radius: 5px;
+
+  &:focus {
+    box-shadow: 1px 1px 4px 1px $color-branding-blue;
+  }
+}
+
+.header {
+  background: $color-branding-blue;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 1em 0;
+}
+
+.main {
+  background: white;
+  display: block;
+  padding: 1em 1rem;
+  @include media-breakpoint-up(md) {
+    padding: 1em 2rem;
   }
 }
